@@ -1,20 +1,36 @@
 import pandas as pd
-import pandas_datareader as web
-from yahoo_fin import stock_info as si
-import datetime as dt
+import yfinance as yf
 
 
 def read_tickers() -> None:
-    tickers = pd.read_csv("tickers.csv")
-    print(tickers)
-    msft = si.get_data(
-        "msft", start_date="30/11/2017", end_date="30/11/2021", interval="1mo"
-    )
-    print(msft["close"])
 
+    tick = [
+        "ADBE",
+        "AMD",
+        "GOOG",
+        "GOOGL",
+        "AMZN",
+        "AAPL",
+        "ASML",
+        "AVGO",
+        "CSCO",
+        "CMCSA",
+        "EBAY",
+        "HSIC",
+        "INTC",
+        "MSFT",
+        "VRSK",
+        "PYPL",
+    ]
 
-def get_price() -> None:
-    pass
+    df = yf.download(tick, start="2017-12-31", end="2021-12-30", interval="1mo")
+    nan_value = float("NaN")
+
+    df.replace("", nan_value, inplace=True)
+
+    df = df.dropna(how="any")
+
+    df.to_excel("file.xlsx")
 
 
 def main() -> None:
