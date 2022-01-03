@@ -24,6 +24,7 @@ def read_tickers() -> None:
     ]
 
     df = yf.download(tick, start="2017-12-31", end="2021-12-30", interval="1mo")
+
     nan_value = float("NaN")
 
     df.replace("", nan_value, inplace=True)
