@@ -31,7 +31,7 @@ def read_tickers() -> None:
 
     df = df.dropna(how="any")
 
-    df.to_excel("file.xlsx")
+    df.to_csv("file.csv")
 
 
 def main() -> None:
