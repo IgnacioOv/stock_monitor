@@ -8,9 +8,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <ul>
+        <li><a href="/">Dashboard</a></li>
+        <li><a href="detail.html">Detalle</a></li>
+      </ul>
+      <div id="filter">
+      <p>Desde</p>
+      <input id="from" type="number">
+      <p>Hasta</p>
+      <input id="to" type="number">
+      <button id="activateFilter">Filter</button>
+    </div>
     <table id="table">
         <thead>
             <tr>
+                <th>Index</th>
                 <th>Date</th>
                 <th>AAPL</th>
                 <th>ADBE</th>

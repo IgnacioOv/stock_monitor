@@ -1,9 +1,11 @@
 import data from "../data.json" assert { type: "json" };
 
-function logData() {
+function logData(from,to) {
   console.log(data);
-  for (var i in data) {
+    
+  for (var i = from; i<to; i++) {
     var row = `<tr>
+                  <td>${i}</td>
                   <td>${data[i].Date}</td>
                   <td>${data[i].ADBE}</td>
                   <td>${data[i].AAPL}</td>
@@ -27,4 +29,18 @@ function logData() {
   }
 }
 
-logData();
+logData(0,data.length);
+
+$("#activateFilter").click(function(){
+  var from = $("#from").val();
+  from = parseInt(from)
+  var to = $("#to").val();
+  to = parseInt(to)
+  $( "#table" ).load( "index.html #table" );
+  setTimeout(function(){
+    logData(from,to)
+  },1000)
+      
+  });
+
+  
